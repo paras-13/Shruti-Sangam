@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shruti-Sangam Login Page</title>
+  <link rel="stylesheet" href="https://cd n.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/login.css">
+  <title>Login Shruti Sangam</title>
+</head>
+
+<body>
+
+  <div class="container">
+    <form id="signup-form" class="content" action="/login" method="post">
+      <!--pinterest logo-->
+      <img src="/Assets/images/ico2.png" alt="pin logo" class="img1" />
+      <p class="header">Log in to see more</p>
+      {{#if error}}
+            <p class="error-message text-danger">{{error}}</p>
+      {{/if}}
+      <input type="email" id="email" placeholder="Email" name="email" class="detail" required/><br />
+      <input type="password" id="password" placeholder="Password" name="password" class="detail" required/>
+
+      <h4><a href="">Forgot your password?</a></h4>
+
+      <button class="btn int" type="submit">Log in</button>
+      <p class="or">OR</p>
+      <button class="btn ggl">
+        <i class="fab fa-google" style="color: rgb(11, 241, 22); padding-right: 10px"></i><a href="#">Continue with
+          Google</a>
+      </button>
+
+      <footer>
+        <p>
+          By continuing, you agree to Our
+          <b>Terms of Service, Privacy policy.</b>
+        </p>
+        <hr />
+        <p><b>New to Shruti-Sangam &nbsp;</b><a href="/register">Create Account</a></p>
+      </footer>
+    </form>
+  </div>
+  <script src="/js/verify.js"></script>
+</body>
+
+</html>

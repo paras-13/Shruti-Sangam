@@ -1,0 +1,251 @@
+* {
+  font-family: "Platypi", serif;
+}
+
+body {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header{
+  box-sizing: border-box;
+  text-align: center;
+  padding: 15px;
+  /* background-color: #333; */
+  color: white;
+  width: 100%;
+}
+
+header {
+  /* position: fixed; */
+  position:relative;
+  background-size: cover;
+  background-color: white;
+  padding: 10px 0;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.nav-icon {
+  width: 70px;
+  border-radius: 30px;
+}
+
+.nav-brand h1 {
+  margin: 0;
+}
+
+.nav-links,
+.nav-icons {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.nav-links li,
+.nav-icons li {
+  margin: 0 10px;
+}
+
+.nav-link li {
+  text-decoration: none;
+  color: black;
+  padding: 8px;
+  transition: border-bottom 0.3s;
+}
+
+.nav-links li:hover {
+  border: 1px solid black;
+}
+
+.nav-links a,
+.nav-icons a {
+  color: black;
+  text-decoration: none;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+/* Style the list item */
+.dropbtn {
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  min-width: 230px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  background-color:rgb(209, 174, 209);
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  text-align: left;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  height:50px;
+  width:100%;
+}
+
+/* Change color of dropdown links on hover */
+
+.dropbtn:after {
+  content: '\2304';
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  transform: translateY(-50%);
+  font-size: 0.7em;
+}
+
+/* Add this to your existing CSS */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-content {
+  position: absolute;
+  left: 100%;
+  top:0;
+  /* Position the submenu to the right of the main menu */
+}
+
+.dropdown-content a:hover{
+  color:white;
+  background-color:rgb(167, 92, 131);
+}
+/* Style changes when hovering over the submenu */
+.dropdown-submenu:hover .dropdown-content {
+  display: block;
+  color:white;
+}
+.inner-submenu a:hover{
+  text-decoration-color:white;
+  background-color:rgb(101, 94, 84);
+}
+
+.after-slide {
+  /* background-color:#9a88ff; */
+  font-family: "Trade Winds", system-ui;
+  font-weight: bold;
+  color: black;
+  box-sizing: border-box;
+  border-radius: 20px;
+  text-align: center;
+  padding: 25px;
+  margin: 5px;
+  font-size: 40px;
+}
+
+section {
+  padding: 80px 0;
+  background-image: url(/Assets/images/bg1.jpg);
+  background-size: cover;
+
+}
+
+.sec-div {
+  margin: 0 120px;
+  padding: 0 30px;
+}
+
+.cont1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.cont2 {
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  width: 300px;
+  height: 200px;
+  margin: 5px;
+}
+
+/* Important */
+.fit-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb-box {
+  margin: 20px;
+  box-shadow: 5px 10px rgb(238, 235, 235);
+  overflow: hidden;
+}
+
+.thumb-img:hover {
+  transition: 1s;
+  transform: scale(1.2);
+}
+
+.vocal {
+  margin-top: 120px;
+}
+
+.art1-div {
+  background-image: url("/Assets/images/temp1.png");
+  height: 700px;
+  padding-top: 150px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.sec4-flex:hover {
+  transition: 1s;
+  transform: scale(0.9);
+}
+
+.info-box {
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.info-box:not(:last-child) {
+  margin-right: 20px;
+}
+
+.info-box:hover {
+  transform: scale(1.1);
+  transition: 1s;
+}
+
+.info-img-box:hover {
+  transition: 0.5s;
+  opacity: 0.8;
+}
+
+.pop-up {
+  font-size: 18px;
+  display: none;
+  border: 2px solid red;
+  width: 50%;
+  height: 30px;
+  border-radius: 10px;
+}
+.head {
+  font-family:"Trade Winds", system-ui;
+}

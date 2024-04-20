@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/courses.css">
+    <link rel="stylesheet" href="/css/pathshala.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>My Pathshala</title>
+</head>
+
+<body>
+    <section class="d-flex justify-content-between py-2">
+        <div>
+            <img class="nav-icon" src="/Assets/images/ico2.png" alt="">
+            <span class="fw-bold text-black mx-4 fs-2">Shruti-Sangam </span>
+        </div>
+        <div class="d-flex">
+            <li class="list-group-item my-2"><a class="btn btn-primary mx-4" href="/logout">LogOut</a></li>
+            <li class="list-group-item my-2"><a class="btn btn-success mx-4" href="/home">Home</a></li>
+        </div>
+    </section>
+
+    <div class="d-flex justify-content-between">
+        <aside>
+            <div class=" py-5 mx-3">
+                <div>
+                    <p class="aside-info-p fs-6" href=""
+                        style="background-image: url('https://a.storyblok.com/f/114532/48x48/3d57a2f033/layer.png/m/');">
+                        <a href="">Test</a>
+                    </p>
+                    <p class="aside-info-p fs-6"
+                        style="background-image: url('https://a.storyblok.com/f/114532/48x48/3d57a2f033/layer.png/m/'); ">
+                        <a href="">Quizzes</a>
+                    </p>
+                    <p class="aside-info-p fs-6"
+                        style="background-image: url('https://a.storyblok.com/f/114532/48x48/3d57a2f033/layer.png/m/');">
+                        <a href="">Study Material</a>
+                    </p>
+                    <p class="aside-info-p fs-6"
+                        style="background-image: url('https://a.storyblok.com/f/114532/48x48/05c247caf1/monitor-mobbile.png/m/');">
+                        <a href="">MyLearning</a>
+                    </p>
+                    <p class="aside-info-p fs-6"
+                        style="background-image: url('https://a.storyblok.com/f/114532/48x48/75ddd6f2d5/medal-star.png/m/');">
+                        <a href="">Certification</a>
+                    </p>
+                    <p class="aside-info-p fs-6"
+                        style="background-image: url('https://a.storyblok.com/f/114532/48x48/41afde4408/one-on-one.png');">
+                        <a href="/profile">Profile</a>
+                    </p>
+                </div>
+            </div>
+        </aside>
+
+        <section>
+            <div class="sec-div">
+
+                {{#if userDetail.length}}
+                {{#each userDetail}}
+                <h2 class="fw-bold">Hello, <span class="typing-name">{{this.firstname}}</span></h2>
+                <h2 class="fw-bold"><span class="typing-welcome"></span></h2>
+
+                {{/each}}
+                {{/if}}
+                <main class="mt-5">
+                    <!-- Main content goes here -->
+                    <ul>
+                        {{#if beginnerCourses.length}}
+                        <h4 class="text-center my-4 fw-bold">Beginner Courses</h4>
+                        <div class="course-info d-flex ">
+                            {{#each beginnerCourses}}
+                            <li class="mx-4 rounded-4 shadow-lg">
+                                <div class="mb-4"><img class="fit-img rounded-4" src="{{this.img}}" alt=""></div>
+
+                                <h3 class="fw-bold">{{this.course}}</h3>
+                                <span class="fw-bold">Name: {{this.firstname}} {{this.lastname}}</span><br>
+                                <span class="fw-bold">Level: {{this.level}}</span><br>
+                                <span class="fw-bold">Package: {{this.package}}</span><br>
+                                <p class="mt-4">Timings: {{this.timings}}</p>
+                                <a class="btn btn-success" href="">Join Class</a>
+                            </li>
+                            {{/each}}
+                        </div>
+
+                        {{else}}
+                        <p>*No Beginner Courses Enrolled</p>
+                        {{/if}}
+
+                        {{#if intermediateCourses.length}}
+                        <h4 class="text-center my-4 fw-bold">Intermediate Courses</h4>
+                        <div class="course-info d-flex ">
+                            {{#each intermediateCourses}}
+                            <li class="mx-4 rounded-4 shadow-lg">
+                                <div class="mb-4"><img class="fit-img rounded-4" src="{{this.img}}" alt=""></div>
+
+                                <h3 class="fw-bold">{{this.course}}</h3>
+                                <span class="fw-bold">Name: {{this.firstname}} {{this.lastname}}</span><br>
+                                <span class="fw-bold">Level: {{this.level}}</span><br>
+                                <span class="fw-bold">Package: {{this.package}}</span><br>
+                                <p class="mt-4">Timings: {{this.timings}}</p>
+                                <a class="btn btn-success" href="">Join Class</a>
+                            </li>
+                            {{/each}}
+                        </div>
+                        {{else}}
+                        <p>*No Intermediate Courses Enrolled</p>
+                        {{/if}}
+
+                        {{#if advanceCourses.length}}
+                        <h4 class="text-center my-4 fw-bold">Advance Courses</h4>
+                        <div class="course-info d-flex ">
+                            {{#each advanceCourses}}
+                            <li class="mx-4 rounded-4 shadow-lg">
+                                <div class="mb-4"><img class="fit-img rounded-4" src="{{this.img}}" alt=""></div>
+
+                                <h3 class="fw-bold">{{this.course}}</h3>
+                                <span class="fw-bold">Name: {{this.firstname}} {{this.lastname}}</span><br>
+                                <span class="fw-bold">Level: {{this.level}}</span><br>
+                                <span class="fw-bold">Package: {{this.package}}</span><br>
+                                <p class="mt-4">Timings: {{this.timings}}</p>
+                                <a class="btn btn-success" href="">Join Class</a>
+                            </li>
+                            {{/each}}
+                        </div>
+                        {{else}}
+                        <p>*No Advance Courses Enrolled</p>
+                        {{/if}}
+                    </ul>
+                </main>
+            </div>
+        </section>
+    </div>
+    <script>
+        $(document).ready(function () {
+            const welcomeText = "Welcome to E-pathshalaa";
+            const typingWelcomeElement = $(".typing-welcome");
+            let indexWelcome = 0;
+            let direction = 1; // 1 for forward, -1 for backward
+
+            function typeHeadingWelcome() {
+                if (indexWelcome < 0 || indexWelcome >= welcomeText.length) {
+                    direction *= -1; // Change direction when reaching the end or start
+                }
+
+                if (direction === 1) {
+                    typingWelcomeElement.text(welcomeText.substring(0, indexWelcome));
+                } else {
+                    typingWelcomeElement.text(welcomeText.substring(0, indexWelcome - 1)); //.split('').reverse().join(''));
+                }
+
+                indexWelcome += direction;
+                setTimeout(typeHeadingWelcome, 150);
+            }
+            setTimeout(typeHeadingWelcome, 1000);
+        });
+
+
+    </script>
+</body>
+
+</html>

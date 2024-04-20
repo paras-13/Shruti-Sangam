@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url(/Assets/images/img17.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 540px; /* Increased width of container */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.img1 {
+    width: 70px; /* Resized icon image */
+    border-radius: 50%; /* Ensuring a circular shape */
+    margin-right: 10px; /* Spacing between icon and text */
+}
+
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.sec1 {
+    margin-left:30px;
+}
+.sec2 {
+    width:50%;
+    margin:auto;
+}
+
+.detail {
+    height: 45px;
+    width:75%;
+    padding: 10px;
+    margin:5px;
+    font-size: 15px;
+    color: #333;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+}
+
+.detail:focus {
+    border-color: #0f5be7;
+    outline: none;
+}
+
+.btn {
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f30d19;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    color:white;
+    background-color: #df0812;
+}
+
+.or {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.ggl {
+    width: 100%;
+    padding: 10px;
+    background-color: #ccc;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.ggl a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.ggl:hover {
+    background-color: #a0a0a0;
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer p {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+footer p:last-child {
+    opacity: 1;
+}
+
+hr {
+    width: 50%;
+    margin: 10px auto;
+    opacity: 0.1;
+}

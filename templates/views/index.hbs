@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&family=Sedan:ital@0;1&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&family=Sedan:ital@0;1&family=Trade+Winds&display=swap"
+        rel="stylesheet">
+    <title>ShrutiSangam - Indian Classical Music</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        /* Add your CSS styles here */
+        .thumb-box {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .thumb-box.selected {
+            transform: translateY(-20px);
+            /* Adjust as needed */
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Image Slider -->
+    {{>header}}
+    <div class="slider-container">
+        <div class="slide fade">
+            <img class="slide-image" src="/Assets/images/thumb6.png">
+            <div class="slide-content">
+                <h3 class="slide-title">Glory of Classical</h3>
+                <p class="slide-desc">
+                    "In Hindustani classical music, every note is a story waiting to be told."
+                </p>
+            </div>
+            <div class="slide-number-container">
+                <p class="slider-number">01</p>
+                <hr>
+                <p class="slider-number">08</p>
+            </div>
+        </div>
+
+        <div class="slide fade">
+            <img class="slide-image" src="/Assets/images/thumb7.png">
+            <div class="slide-content">
+                <h4 class="slide-title">Raga and Raga</h4>
+                <p class="slide-desc">
+                    "The raga is the canvas, and the musician the painter in Hindustani classical music."
+                </p>
+            </div>
+            <div class="slide-number-container">
+                <p class="slider-number">02</p>
+                <hr>
+                <p class="slider-number">08</p>
+            </div>
+        </div>
+
+        <div class="slide fade">
+            <img class="slide-image" src="/Assets/images/thumb8.png">
+            <div class="slide-content">
+                <h3 class="slide-title">Silence Speaks</h3>
+                <p class="slide-desc">
+                    "In Hindustani classical music, silence speaks as eloquently as sound."
+                </p>
+            </div>
+            <div class="slide-number-container">
+                <p class="slider-number">03</p>
+                <hr>
+                <p class="slider-number">08</p>
+            </div>
+        </div>
+        <div class="slide fade">
+            <img class="slide-image" src="/Assets/images/thumb9.png">
+            <div class="slide-content">
+                <h3 class="slide-title">Melody & Emotion</h3>
+                <p class="slide-desc">
+                    "Through Hindustani classical music, we explore the depths of emotion with each melody."
+                </p>
+            </div>
+            <div class="slide-number-container">
+                <p class="slider-number"></p>
+                <hr>
+                <p class="slider-number">08</p>
+            </div>
+        </div>
+        <div class="slide fade">
+            <img class="slide-image" src="/Assets/images/thumb10.png">
+            <div class="slide-content">
+                <h3 class="slide-title">Alap</h3>
+                <p class="slide-desc">
+                    "The alap in Hindustani classical music is the gentle whisper before the song takes flight."
+                </p>
+            </div>
+            <div class="slide-number-container">
+                <p class="slider-number">08</p>
+                <hr>
+                <p class="slider-number">08</p>
+            </div>
+        </div>
+        <div class="slide fade">
+            <img class="slide-image" src="/Assets/images/thumb14.png">
+            <div class="slide-content">
+                <h3 class="slide-title">Rhytm of Life</h3>
+                <p class="slide-desc">
+                    "Through Hindustani classical music, we find harmony not just in notes, but in the rhythm of life
+                    itself.""
+                </p>
+            </div>
+            <div class="slide-number-container">
+                <p class="slider-number">06</p>
+                <hr>
+                <p class="slider-number">08</p>
+            </div>
+        </div>
+        <div class="slide fade">
+            <img class="slide-image" src="/Assets/images/thumb12.png">
+            <div class="slide-content">
+                <h3 class="slide-title">Guru Shishya Parampara</h3>
+                <p class="slide-desc">
+                    "In Hindustani classical music, the guru-shishya parampara is the sacred thread connecting past,
+                    present, and future."
+                </p>
+            </div>
+            <div class="slide-number-container">
+                <p class="slider-number">07</p>
+                <hr>
+                <p class="slider-number">08</p>
+            </div>
+        </div>
+        <div class="slide fade">
+            <img class="slide-image" src="/Assets/images/thumb13.png">
+            <div class="slide-content">
+                <h3 class="slide-title">Taal & Taal</h3>
+                <p class="slide-desc">
+                    ""Taal in Hindustani classical music is the river of rhythm flowing through the landscape of
+                    sound.""
+                </p>
+            </div>
+            <div class="slide-number-container">
+                <p class="slider-number">08</p>
+                <hr>
+                <p class="slider-number">08</p>
+            </div>
+        </div>
+
+        <!-- Next and previous buttons -->
+        <div class="slider-nav">
+            <a class="slider-nav-btn" onclick="plusSlides(-1)">
+                <ion-icon name="caret-back-outline"></ion-icon>
+            </a>
+            <a class="slider-nav-btn" onclick="plusSlides(1)">
+                <ion-icon name="caret-forward-outline"></ion-icon>
+            </a>
+        </div>
+
+        <!-- The dots/circles -->
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+            <span class="dot" onclick="currentSlide(6)"></span>
+            <span class="dot" onclick="currentSlide(7)"></span>
+            <span class="dot" onclick="currentSlide(8)"></span>
+        </div>
+    </div>
+    <div class="after-slide"></div>
+    <main>
+        <section class="section1">
+            <div class="sec-div">
+                <div class="d-flex justify-content-between">
+                    <div class="w-50">
+                        <h1 class="head">Only at Shruti-Sangam!</h1>
+                        <p class="mt-4">Learn music & dance at your own pace through a personalized adaptive learning
+                            model that
+                            favors your interest and growth. Get a trusted result-oriented curriculum created by
+                            industry experts to accelerate your learning. You will also get multiple performance
+                            opportunities to boost your confidence and improve your technical skills.</p>
+                    </div>
+                    <div class="cont1">
+                        <div class="box shadow rounded-4" style="height:45%">
+                            <div class="d-flex p-3">
+                                <div class="p-3">
+                                    <h3>1X1</h3>
+                                    <p>Live Online Sessions</p>
+                                </div>
+                                <img src="https://a.storyblok.com/f/114532/248x248/7da7afd95e/3.png/m/114x114" alt="">
+                            </div>
+                        </div>
+                        <div class="box shadow rounded-4" style="height:45%">
+                            <div class="d-flex p-3">
+                                <div class="p-3">
+                                    <h4>Personalized</h4>
+                                    <p>Result Orientation Curriculam</p>
+                                </div>
+                                <img src="https://a.storyblok.com/f/114532/248x248/09e89e7dcb/2.png/m/104x104" alt="">
+                            </div>
+                        </div>
+                        <div class="box shadow rounded-4" style="height:45%">
+                            <div class="d-flex p-3">
+                                <div class="p-3">
+                                    <h4>Performance</h4>
+                                    <p>Oppurtinites</p>
+                                </div>
+                                <img src="https://a.storyblok.com/f/114532/248x248/4bfc637c29/1.png/m/100x100" alt="">
+                            </div>
+                        </div>
+                        <div class="box shadow rounded-4" style="height:45%">
+                            <div class="d-flex p-3">
+                                <div class="p-3">
+                                    <h4>Graded</h4>
+                                    <p>Courses</p>
+                                </div>
+                                <img src="https://a.storyblok.com/f/114532/248x248/23be925964/4.png/m/104x104" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:100px; margin-bottom:30px;">
+                    <h3 class="text-center fw-semibold">Platform Features</h3>
+                </div>
+                <div class="d-flex">
+                    <div class="box rounded-4 bg-success-subtle">
+                        <div class="m-2"><img class="rounded-4 px-auto" style="margin-left:60px"
+                                src="https://a.storyblok.com/f/114532/2234x2409/b7910f5316/curriculum-and-books.png/m/142x128"
+                                alt="">
+                            <p class="p-3 text-center fw-bold bg-success-subtle rounded-bottom">Books and Practise
+                                Videos
+                        </div>
+                        </p>
+                    </div>
+                    <div class="box rounded-4 bg-success-subtle">
+                        <div class="m-2"><img class="rounded-4 p-1" style="margin-left:60px"
+                                src="https://a.storyblok.com/f/114532/2234x2409/8ab358bb19/learn-at-your-own-place.png/m/182x128"
+                                alt="">
+                            <p class="p-3 text-center fw-bold bg-success-subtle rounded-bottom">Adaptive Learning Model
+                            </p>
+                        </div>
+                    </div>
+                    <div class="box rounded-4 bg-success-subtle">
+                        <div class="m-2">
+                            <img class="rounded-4 p-1" style="margin-left:60px"
+                                src="https://a.storyblok.com/f/114532/2234x2409/c06af6f268/music-tools-to-hone-your-skills.png/m/183x128"
+                                alt="">
+                            <p class="p-3 text-center fw-bold bg-success-subtle rounded-bottom">Practise anytime</p>
+                        </div>
+                    </div>
+                    <div class="box rounded-4 bg-success-subtle">
+                        <div class="m-2">
+                            <img class=" rounded-4 p-1" style="margin-left:60px"
+                                src="https://a.storyblok.com/f/114532/2234x2409/f1a4c0e70d/record-with-spardha.png/m/181x128"
+                                alt="">
+                            <p class="p-3 text-center fw-bold bg-success-subtle rounded-bottom">24/7 doubt handling</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section2">
+            <div class="sec-div">
+                <div style="margin-bottom:60px;">
+                    <h1 class="text-center fw-bold head">Our Courses</h1>
+                </div>
+                <div class="instruments">
+                    <div class="border border-white p-4 rounded-4 shadow-lg">
+                        <h4 class="head w-25 text-center p-2 rounded-3 fw-bold text-white"
+                            style="background-color:rgb(58, 3, 49)">Instrumental</h4>
+                        <div class="d-flex mt-5 mb-3">
+                            <div class="w-50 p-3 shadow mx-2 p-5">
+                                <h2 id="inst-head" class="pb-2">Tabla</h2>
+                                <p id="inst-para">Tabla, the rhythmic heartbeat of Hindustani classical music, embodies
+                                    a rich tradition of percussive artistry and cultural heritage.<br><b>In Hindustani
+                                        classical music, the tabla serves as the primary rhythmic accompaniment,
+                                        providing a dynamic and intricate framework for melodic improvisation.</b> <br>
+                                </p>
+                                <button class="btn btn-warning pt-2"><a id="inst-course"
+                                        class="text-decoration-none text-dark fw-bold" href="tabla.html"
+                                        target="_blank">See Course</a></button>
+                            </div>
+                            <div class="w-50">
+                                <img id="inst-main-img" class="fit-img rounded-4" src="/Assets/images/1.png" alt="">
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div id="tabla" class="thumb-box rounded-4 w-25">
+                                <img class="fit-img inst-thumb-img thumb-img rounded-4" src="/Assets/images/1.png"
+                                    alt="">
+                                <p>Tabla</p>
+                            </div>
+                            <div id="sitar" class="thumb-box rounded-4 w-25"><img
+                                    class="fit-img inst-thumb-img thumb-img rounded-4" src="/Assets/images/2.png"
+                                    alt="">
+                                <p>Sitar</p>
+                            </div>
+                            <div id="flute" class="thumb-box rounded-4 w-25"><img
+                                    class="fit-img inst-thumb-img thumb-img rounded-4" src="/Assets/images/thumb7.png"
+                                    alt="">
+                                <p>Flute</p>
+                            </div>
+                            <div id="harmonium" class="thumb-box rounded-4 w-25">
+                                <img class="fit-img inst-thumb-img thumb-img rounded-4" src="/Assets/images/3.png"
+                                    alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vocals">
+                    <div class="border border-white p-4 rounded-4 shadow-lg">
+                        <h4 class="head w-25 text-center p-2 rounded-3 fw-bold text-white"
+                            style="background-color:rgb(58, 3, 49)">Vocal</h4>
+                        <div class="d-flex mt-5 mb-3">
+                            <div class="w-50 p-3 shadow mx-2 p-5">
+                                <h2 id="vocal-head" class="pb-2">Hindustani</h2>
+                                <p id="vocal-para">Hindustani vocal music is a traditional form of music that originates
+                                    from the Indian subcontinent. It has a rich and vibrant history that dates back
+                                    centuries and is known for its complex rhythms.<br><b>Hindustani music has evolved
+                                        from the classical music tradition of
+                                        North India, which was heavily influenced by Persian and Arabic music.</b><br>
+                                    One of the most unique aspects of Hindustani vocal music is its emphasis on
+                                    improvisation.
+                                </p>
+                                <button class="btn btn-warning pt-2"><a id="inst-course"
+                                        class="text-decoration-none text-dark fw-bold" href="tabla.html"
+                                        target="_blank">See Course</a></button>
+                            </div>
+                            <div class="w-50">
+                                <img id="vocal-main-img" class="fit-img rounded-4" src="/Assets/images/4.png" alt="">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <div id="hindustani" class="thumb-box rounded-4 w-25">
+                                <img class="fit-img vocal-thumb-img thumb-img rounded-4" src="/Assets/images/4.png"
+                                    alt="">
+                                <p>Tabla</p>
+                            </div>
+                            <div id="carnatic" class="thumb-box rounded-4 w-25"><img
+                                    class="fit-img vocal-thumb-img thumb-img rounded-4" src="/Assets/images/6.png"
+                                    alt="">
+                                <p>Sitar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section3" style="padding:50px;">
+            <div class="sec-div">
+                <div class="bg-warning p-4 rounded-4 d-flex justify-content-between mx-5">
+                    <div class="fs-1 text-center fw-bold w-25" style="color:rgb(6, 6, 90)">500+
+                        <p class="fs-6 fw-bold text-dark">Online Learners</p>
+                    </div>
+                    <div class="fs-1 text-center fw-bold w-25" style="color:rgb(6, 6, 90)">30+
+                        <p class="fs-6 fw-bold text-dark">Teachers</p>
+                    </div>
+                    <div class="fs-1 text-center fw-bold w-25" style="color:rgb(6, 6, 90)">200+
+                        <p class="fs-6 fw-bold text-dark">Live Sessions</p>
+                    </div>
+                    <div class="fs-1 text-center fw-bold w-25" style="color:rgb(6, 6, 90)">400+
+                        <p class="fs-6 fw-bold text-dark">Recorded Sessions + Study Material</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <article class="article1">
+            <div class="art1-div">
+                <div class="sec-div d-flex justify-content-between">
+                    <div class="w-50 px-2">
+                        <h1 class="fw-bold text-white text-decoration-underline"> New To Indian Classical Music?</h1>
+                        <br>
+                        <p class="text-white fst-italic lh-base fs-5 fw-bold">Welcome to the beginner's guide to Indian
+                            classical music. Whether you're stepping into the enchanting world of raga and Indian tala
+                            for the first time or seeking a quick refresher, we've curated this concise overview to
+                            deepen your understanding. Explore this introductory resource to feel more at ease as you
+                            embark on your journey through the rich traditions of Indian classical music.</p>
+                        <button class="btn btn-warning my-3">Read More</button>
+                    </div>
+                    <!-- <div class="w-50 px-5"><img class="fit-img w-75 rounded-4 opacity-75 shadow" src="/Assets/images/img10.jpg" alt=""></div> -->
+                </div>
+            </div>
+        </article>
+        <section class="section4">
+            <div class="sec-div">
+                <div>
+                    <h2 class="text-center fw-bold p-3 rounded-4 head">"Raag and Taal Insights: Delving into Tradition"</h2>
+                </div>
+                <div class="d-flex justify-content-center mt-5 overflow-hidden">
+                    <div class="w-25"></div>
+                    <div class="sec4-flex mx-4 w-50 border rounded-4 p-3 bg-white shadow-lg">
+                        <div>
+                            <img class="fit-img rounded-4" src="/Assets/images/img11.png" alt="">
+                            <h3 class="my-4 fw-bold">Indian Raag System</h3>
+                            <p>The notion of a Raag is at the foundation of Indian Classical Music. Simply put, a Raag
+                                uniquely defines a set of musical notes and their allowed arrangements to form a melody
+                                to evoke a certain mood.
+                                In Sanskrit, a Raag means “something that colors your mind.” Within Indian classical
+                                musical systems, a Raag has the power to create very specific emotions in one's mind...
+                            </p>
+                            <button class="btn btn-warning">Read More</button>
+                        </div>
+                    </div>
+                    <div class="sec4-flex mx-5 w-50 border rounded-4 p-3 bg-white shadow-lg">
+                        <div>
+                            <img class="fit-img rounded-4" src="/Assets/images/img13.jpg" alt="">
+                            <h3 class="my-4 fw-bold">Indian Taal System</h3>
+                            <p>Rhythm is encompassed in the notion of Taal (spelled and pronounced tala in Hindi) in
+                                Indian classical music, whether Hindustani (North Indian) or Carnatic (South Indian). It
+                                is loosely defined as rhythm, but the concept is more nuanced than that and operates by
+                                dividing time cyclically rather than linearly.....</p>
+                            <button class="btn btn-warning"> Read More</button>
+                        </div>
+                    </div>
+                    <div class="w-25"></div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="sec-div bg-white rounded-4" style="padding-bottom:80px;">
+                <div class="p-5">
+                    <h2 class="text-center fw-bold text-decoration-underline head">History Of Indian Classical</h2>
+                    <p></p>
+                </div>
+                <div class="d-flex justify-content-center" style="padding-bottom:20px;">
+                    <div class="info-box shadow w-25">
+                        <div class="info-img-box"><img class="fit-img rounded-4" src="/Assets/images/im1.jpg" alt="">
+                        </div>
+                        <div class="pt-4">
+                            <h4>2500 BC - 1500 BC</h4>
+                            <p>Indus Valley Civilization</p>
+                            <button class="btn btn-warning">Read More...</button>
+                        </div>
+                    </div>
+                    <div class="info-box shadow w-25">
+                        <div class="info-img-box"><img class="fit-img rounded-4" src="/Assets/images/im2.jpg" alt="">
+                        </div>
+                        <div class="pt-4">
+                            <h4>1500 BC - 500 BC</h4>
+                            <p>Vedic Civilization</p>
+                            <button class="btn btn-warning">Read More...</button>
+                        </div>
+                    </div>
+                    <div class="info-box shadow w-25">
+                        <div class="info-img-box"><img class="fit-img rounded-4" src="Assets/images/im3.jpg" alt="">
+                        </div>
+                        <div class="pt-4">
+                            <h4>500 BC - 200 BC</h4>
+                            <p>Ramayan ans Music</p>
+                            <button class="btn btn-warning">Read More...</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center" style="padding-bottom:20px;">
+                    <div class="info-box shadow w-25">
+                        <div class="info-img-box"><img class="fit-img rounded-4" src="/Assets/images/im4.jpg" alt="">
+                        </div>
+                        <div class="pt-4">
+                            <h4>600 AD - 1200 AD</h4>
+                            <p>Delhi in Music</p>
+                            <button class="btn btn-warning">Read More...</button>
+
+                        </div>
+                    </div>
+                    <div class="info-box shadow w-25">
+                        <div class="info-img-box"><img class="fit-img rounded-4" src="/Assets/images/im5.jpg" alt="">
+                        </div>
+                        <div class="pt-4">
+                            <h4>1200 AD - 1700 AD</h4>
+                            <p>Delhi Sultanate</p>
+                            <button class="btn btn-warning">Read More...</button>
+                        </div>
+                    </div>
+                    <div class="info-box shadow w-25">
+                        <div class="info-img-box"><img class="fit-img rounded-4" src="/Assets/images/im6.jpg" alt="">
+                        </div>
+                        <div class="pt-4">
+                            <h4>1700 AD Onwards</h4>
+                            <p>Modern Period</p>
+                            <button class="btn btn-warning">Read More...</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <article class="article2 bg-dark">
+            <div class="art2-div">
+                <div class="sec-div py-5">
+                        <h1 class="fw-bold text-white text-decoration-underline text-center head"> Our Vision</h1><br>
+                        <p class="text-white lh-base fs-5" style="color:rgb(231, 231, 237)">
+                            Welcome to Shruti-Sangam. We are dedicated to exploring the profound world of Hindustani
+                            Classical Music, delving into its rich intricacies and technical aspects through engaging
+                            video demonstrations. This timeless art form, steeped in centuries of evolution, finds its
+                            true essence best conveyed through visual aids. Our platform serves as a comprehensive
+                            resource for enthusiasts seeking deeper insights into the realm of Indian Classical Music.
+                            Upholding the principles of authenticity, our team conducts thorough research on various
+                            topics, drawing wisdom from revered sources such as Abhinav Geetanjali by Pt. Ramashreya
+                            Jha, Hindustani Sangeet Paddhati by Pt. Bhatkande, among others. It's essential to recognize
+                            that while our video encyclopedias offer valuable insights, the true essence of Hindustani
+                            Classical Music is most effectively imparted through the revered tradition of Guru-Shishya
+                            parampara (Teacher-Student tradition).
+                        </p>
+                    <!-- <div class="w-50 px-5"><img class="fit-img w-75 rounded-4 opacity-75 shadow" src="/Assets/images/img10.jpg" alt=""></div> -->
+                </div>
+            </div>
+        </article>
+        <!-- Add more sections for Learn and Engage, Connect with Community, Stay Updated, and Begin Your Musical Odyssey -->
+
+    </main>
+
+    <footer>
+        <p class="text-center bg-dark text-white py-5">&copy; 2024 ShrutiSangam. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/slider.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
