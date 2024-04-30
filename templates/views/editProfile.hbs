@@ -1,72 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
     <title>Document</title>
     <style>
-        .head {
-            text-align: center;
-            width:30%;
-            font-family:"Poppins", sans-serif;
-            background-color:rgb(19, 81, 143);
-            color:white;
+        body {
+            margin-top: 20px;
+            color: #1a202c;
+            text-align: left;
+            background-color: #e2e8f0;
         }
-        .sub-head {
-            background-color:rgb(255, 255, 255);
-            color:rgb(59, 6, 59);
-            font-weight:bold;
-            font-family:Cambria;
+
+        .main-body {
+            padding: 15px;
         }
-        div {
-            font-size : 16px;
+
+        .card {
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+        }
+
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 0 solid rgba(0, 0, 0, .125);
+            border-radius: .25rem;
+        }
+
+        .card-body {
+            flex: 1 1 auto;
+            min-height: 1px;
+            padding: 1rem;
+        }
+
+        .gutters-sm {
+            margin-right: -8px;
+            margin-left: -8px;
+        }
+
+        .gutters-sm>.col,
+        .gutters-sm>[class*=col-] {
+            padding-right: 8px;
+            padding-left: 8px;
+        }
+
+        .mb-3,
+        .my-3 {
+            margin-bottom: 1rem !important;
+        }
+
+        .bg-gray-300 {
+            background-color: #e2e8f0;
+        }
+
+        .h-100 {
+            height: 100% !important;
+        }
+
+        .shadow-none {
+            box-shadow: none !important;
         }
     </style>
 </head>
+
 <body>
-        <section class="container">
+    <nav aria-label="breadcrumb" class="main-breadcrumb mx-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+        </ol>
+    </nav>
+    <div class="container">
+        <div class="main-body">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
 
-        <div class="sec-div">
-            <form class="w-50 m-auto bg-white rounded-4 p-5 shadow-lg" action="/editProfile" method="post">
-                <h3 class="fw-bold">Profile</h3>
-                <div class="w-50 m-auto">
-                    <img class="fit-img rounded-2" src="/Assets/images/im1.jpg" alt="Profile Picture">
-                </div>
-                <div class="mt-5">
-                    <div class="d-flex justify-content-between border border-secondary mb-2">
-                        <div class="border border-secondary head p-2">FirstName:</div>
-                        
-                    </div>
-                    <div class="d-flex justify-content-between border border-secondary mb-2">
-                        <div class="border border-secondary head p-2">LastName:</div>
-                        <input class="text-start w-75 p-2 px-5 sub-head" value="{{user.lastname}}" type="text" name="lname"></input>
-                    </div>
-                    <div class="d-flex justify-content-between border border-secondary mb-2">
-                        <div class="border border-secondary head p-2">Email:</div>
-                        <input class="text-start w-75 p-2 px-5 sub-head" value="{{user.email}}" type="email" name="email"></input>
-                    </div>
-                    <div class="d-flex justify-content-between border border-secondary mb-2">
-                        <div class="border border-secondary head p-2">Mobile:</div>
-                        <input class="text-start w-75 p-2 px-5 sub-head" value="{{user.mobile}}" type="tel" name="mobile"></input>
-                    </div>
-                    <div class="d-flex justify-content-between border border-secondary mb-2">
-                        <div class="border border-secondary head p-2">Age:</div>
-                        <input class="text-start w-75 p-2 px-5 sub-head" value="{{user.age}}" type="number" name="age"></input>
-                    </div>
-                </div>
-                <button class="btn btn-danger mt-4" type="submit">Edit Profile</button>
-            </form>
-            <div class="profile-actions">
+                                <img src="{{user.profilePicture}}" alt="Admin" class="rounded-circle p-1 bg-primary"
+                                    width="110">
+                                <div class="mt-3">
+                                    <h4>{{user.firstname}} {{user.lastname}}</h4>
+                                    <p class="text-secondary mb-1">Music Enthusiast</p>
+                                    <p class="text-muted font-size-sm">{{user.country}}</p>
+                                    <button class="btn btn-primary">Follow</button>
+                                    <button class="btn btn-outline-primary">Message</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="d-flex align-items-center mb-3">Your Status</h5>
+                                            <p>Test Attempted</p>
+                                            <div class="progress mb-3" style="height: 5px">
+                                                <div class="progress-bar bg-primary" role="progressbar"
+                                                    style="width: 20%" aria-valuenow="20" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                            <p>Events Attented</p>
+                                            <div class="progress mb-3" style="height: 5px">
+                                                <div class="progress-bar bg-danger" role="progressbar" style="width: 5%"
+                                                    aria-valuenow="4" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <p>Articles Explored</p>
+                                            <div class="progress mb-3" style="height: 5px">
+                                                <div class="progress-bar bg-success" role="progressbar"
+                                                    style="width: 42%" aria-valuenow="23" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                            <p>Certifications</p>
+                                            <div class="progress mb-3" style="height: 5px">
+                                                <div class="progress-bar bg-warning" role="progressbar"
+                                                    style="width: 10%" aria-valuenow="2" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <form class="card-body" action="/editProfile" method="post">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">First Name</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    <input class="text-start w-50  sub-head" value="{{user.firstname}}" type="text"
+                                        name="fname"></input>
+                                </div>
+                                <div class="col-sm-3 mt-2">
+                                    <h6 class="mb-0">Second Name</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary mt-2">
+                                    <input class="text-start w-50  sub-head" value="{{user.lastname}}" type="text"
+                                        name="lname"></input>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary d-flex justify-content-between">
+                                    <p>{{user.email}}</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Phone</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary d-flex justify-content-between">
+                                    <input class="text-start w-50  sub-head" value="{{user.mobile}}" type="text"
+                                        name="mobile"></input>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Age</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary d-flex justify-content-between">
+                                    <input class="text-start w-50  sub-head" value="{{user.age}}" type="text" name="age"></input>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">Address</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary d-flex justify-content-between">
+                                    <input class="text-start w-50  sub-head" value="{{user.address}}" type="text" name="address"></input>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class=""><img class="mx-2" style="width:15%" src="/Assets/images/instaico.png"
+                                            alt="">Instagram</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary d-flex justify-content-between">
+                                    <input class="text-start w-50  sub-head" value="{{user.instagram}}" type="text" name="instagram"></input>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class=""><img class="mx-2" style="width:15%" src="/Assets/images/fbico.png"
+                                            alt="">Facebook</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary d-flex justify-content-between">
+                                    <input class="text-start w-50  sub-head" value="{{user.facebook}}" type="text" name="facebook"></input>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class=""><img class="mx-2" style="width:15%" src="/Assets/images/twico.png"
+                                            alt="">Twitter</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary d-flex justify-content-between">
+                                    <input class="text-start w-50  sub-head" value="{{user.twitter}}" type="text" name="twitter"></input>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class=""><img class="mx-2" style="width:15%" src="/Assets/images/ytico.png"
+                                            alt="">You-tube</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary d-flex justify-content-between">
+                                    <input class="text-start w-50  sub-head" value="{{user.youtube}}" type="text" name="youtube"></input>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-danger mt-4" type="submit">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+    <hr>
+    <footer>
+        <div class="text-center p-4">All Rights reserved to Shruti-Sangam @2024</div>
+    </footer>
 </body>
+
 </html>

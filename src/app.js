@@ -76,7 +76,7 @@ app.get('/tablaCourseInt', requireAuth, (req, res) => {
     res.render('tablaCourseInt', { isAuthenticated });
 });
 
-app.get('/cart', async (req, res) => {
+app.get('/myCart', async (req, res) => {
     try {
         const isAuthenticated = req.cookies.jwt ? true : false;
         const userEmail = req.cookies.info;
@@ -153,7 +153,7 @@ app.get('/editProfile', requireAuth, async (req, res) => {
         const email = req.cookies.info;
         const user = await Register.findOne({ email });
         if (user) {
-            res.render('demo', { isAuthenticated, user });
+            res.render('editProfile', { isAuthenticated, user });
         }
     }
     catch (err) {
@@ -300,7 +300,7 @@ app.post('/courses', async (req, res) => {
         });
         await userDetails.save();
         await cartDetails.save();
-        res.redirect('/myPathshala');
+        res.redirect('/myCart');
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal Server Error');
