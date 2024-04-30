@@ -43,6 +43,10 @@ const CourseSchema = new mongoose.Schema({
     },
     img : {
         type:String,
+    },
+    isChecked : {
+        type:String,
+        default: 'No'
     }
 });
 

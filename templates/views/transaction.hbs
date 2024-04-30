@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!--
+    <link rel="stylesheet" href="/css/style.css"> --}}
+    <link rel="stylesheet" href="/css/trans.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&family=Sedan:ital@0;1&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&family=Sedan:ital@0;1&family=Trade+Winds&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+    <style>
+        .user-data {
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container d-flex">
+        <div class="inline w-50">
+            <div class="m-auto">
+                <form class="w-50 user-data">
+                    <p>Hello,{{name}} get your course ready!</p>
+                    <h3>Your Details:</h3>
+                    <div class="form-group my-4">
+                        <label for="name fw-bold">Name:</label>
+                        <input type="email" class="form-control" id="name" placeholder="{{name}}" readonly>
+                    </div>
+                    <div class="form-group my-4">
+                        <label for="course fw-bold">Course:</label>
+                        <input type="email" class="form-control" id="course" placeholder="{{course}}" readonly>
+                    </div>
+                    <div class="form-group my-4">
+                        <label for="level fw-bold">Level:</label>
+                        <input type="email" class="form-control" id="level" placeholder="{{level}}" readonly>
+                    </div>
+                    <div class="form-group my-4">
+                        <label for="pack fw-bold">Package:</label>
+                        <input type="email" class="form-control" id="pack" placeholder="{{pack}}" readonly>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="Checkout" class="inline">
+            <h1>Pay Invoice</h1>
+            <div class="card-row">
+                <span class="visa"></span>
+                <span class="mastercard"></span>
+                <span class="amex"></span>
+                <span class="discover"></span>
+            </div>
+            <form action="\transaction" method="post">
+                <input type="hidden" value="{{course}}" name="course">
+                <input type="hidden" value="{{level}}" name="level">
+                <div class="form-group">
+                    <label for="PaymentAmount">Payment amount</label>
+                    <div class="amount-placeholder">
+                        <span>Rs.</span>
+                        <span>18240</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label or="NameOnCard">Name on card</label>
+                    <input id="NameOnCard" class="form-control" type="text" maxlength="255"></input>
+                </div>
+                <div class="form-group">
+                    <label for="CreditCardNumber">Card number</label>
+                    <input id="CreditCardNumber" class="null card-image form-control" type="text"></input>
+                </div>
+                <div class="expiry-date-group form-group">
+                    <label for="ExpiryDate">Expiry date</label>
+                    <input id="ExpiryDate" class="form-control" type="date" placeholder="MM / YY" maxlength="7"></input>
+                </div>
+                <div class="security-code-group form-group">
+                    <label for="SecurityCode">Security code</label>
+                    <div class="input-container">
+                        <input id="SecurityCode" class="form-control" type="text"></input>
+                        <i id="cvc" class="fa fa-question-circle"></i>
+                    </div>
+                    <div class="cvc-preview-container two-card hide">
+                        <div class="amex-cvc-preview"></div>
+                        <div class="visa-mc-dis-cvc-preview"></div>
+                    </div>
+                </div>
+                <div class="zip-code-group form-group">
+                    <label for="ZIPCode">ZIP/Postal code</label>
+                    <div class="input-container">
+                        <input id="ZIPCode" class="form-control" type="text" maxlength="10"></input>
+                        <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-placement="left"
+                            data-content="Enter the ZIP/Postal code for your credit card billing address."><i
+                                class="fa fa-question-circle"></i></a>
+                    </div>
+                </div>
+                
+                <button id="PayButton" class="btn btn-block btn-success submit-button" type="submit">
+                    <span class="submit-button-lock"></span>
+                    <span class="align-middle">Pay Rs. 18240.00</span>
+                </button>
+            </form>
+        </div>
+    </div>
+    <footer class="bg-dark p-4">
+        <div class="text-center text-white">All Rights Reserved With @Shruti Sangam 2024</div>
+    </footer>
+</body>
+
+</html>

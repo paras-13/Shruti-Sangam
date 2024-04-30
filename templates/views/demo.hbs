@@ -91,8 +91,7 @@
                                     <h4>{{user.firstname}} {{user.lastname}}</h4>
                                     <p class="text-secondary mb-1">Music Enthusiast</p>
                                     <p class="text-muted font-size-sm">{{user.country}}</p>
-                                    <button class="btn btn-primary" id="followButton"
-                                        onclick="toggleFollow()">Follow</button>
+                                    <button class="btn btn-primary">Follow</button>
                                     <button class="btn btn-outline-primary">Message</button>
                                 </div>
                             </div>
@@ -134,15 +133,21 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card mb-3">
-                        <div class="card-body">
+                        <form class="card-body" action="/editProfile" method="post">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <h6 class="mb-0">Full Name</h6>
+                                    <h6 class="mb-0">First Name</h6>
                                 </div>
-                                <div class="col-sm-9 text-secondary d-flex justify-content-between">
-                                    <p>{{user.firstname}} {{user.lastname}}</p>
-                                    <a href="/editProfile" style="width:15%"><img class="w-25"
-                                            src="/Assets/images/editico.png" alt=""></a>
+                                <div class="col-sm-9 text-secondary">
+                                    <input class="text-start w-50  sub-head" value="{{user.firstname}}" type="text"
+                                        name="fname"></input>
+                                </div>
+                                <div class="col-sm-3 mt-2">
+                                    <h6 class="mb-0">Second Name</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary mt-2">
+                                    <input class="text-start w-50  sub-head" value="{{user.lastname}}" type="text"
+                                        name="lname"></input>
                                 </div>
                             </div>
                             <hr>
@@ -160,9 +165,8 @@
                                     <h6 class="mb-0">Phone</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary d-flex justify-content-between">
-                                    <p>{{user.mobile}}</p>
-                                    <a href="/editProfile" style="width:15%"><img class="w-25"
-                                            src="/Assets/images/editico.png" alt=""></a>
+                                    <input class="text-start w-50  sub-head" value="{{user.mobile}}" type="text"
+                                        name="mobile"></input>
                                 </div>
                             </div>
                             <hr>
@@ -171,9 +175,7 @@
                                     <h6 class="mb-0">Age</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary d-flex justify-content-between">
-                                    <p>{{user.age}}</p>
-                                    <a href="/editProfile" style="width:15%"><img class="w-25"
-                                            src="/Assets/images/editico.png" alt=""></a>
+                                    <input class="text-start w-50  sub-head" value="{{user.age}}" type="text" name="age"></input>
                                 </div>
                             </div>
                             <hr>
@@ -182,9 +184,7 @@
                                     <h6 class="mb-0">Address</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary d-flex justify-content-between">
-                                    <p>{{user.address}}</p>
-                                    <a href="/editProfile" style="width:15%"><img class="w-25"
-                                            src="/Assets/images/editico.png" alt=""></a>
+                                    <input class="text-start w-50  sub-head" value="{{user.address}}" type="text" name="address"></input>
                                 </div>
                             </div>
                             <hr>
@@ -194,9 +194,7 @@
                                             alt="">Instagram</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary d-flex justify-content-between">
-                                    <p>{{user.instagram}}</p>
-                                    <a href="/editProfile" style="width:15%"><img class="w-25"
-                                            src="/Assets/images/editico.png" alt=""></a>
+                                    <input class="text-start w-50  sub-head" value="{{user.instagram}}" type="text" name="instagram"></input>
                                 </div>
                             </div>
                             <hr>
@@ -206,9 +204,7 @@
                                             alt="">Facebook</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary d-flex justify-content-between">
-                                    <p>{{user.facebook}}</p>
-                                    <a href="/editProfile" style="width:15%"><img class="w-25"
-                                            src="/Assets/images/editico.png" alt=""></a>
+                                    <input class="text-start w-50  sub-head" value="{{user.facebook}}" type="text" name="facebook"></input>
                                 </div>
                             </div>
                             <hr>
@@ -218,9 +214,7 @@
                                             alt="">Twitter</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary d-flex justify-content-between">
-                                    <p>{{user.twitter}}</p>
-                                    <a href="/editProfile" style="width:15%"><img class="w-25"
-                                            src="/Assets/images/editico.png" alt=""></a>
+                                    <input class="text-start w-50  sub-head" value="{{user.twitter}}" type="text" name="twitter"></input>
                                 </div>
                             </div>
                             <hr>
@@ -230,18 +224,16 @@
                                             alt="">You-tube</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary d-flex justify-content-between">
-                                    <p>{{user.youtube}}</p>
-                                    <a href="/editProfile" style="width:15%"><img class="w-25"
-                                            src="/Assets/images/editico.png" alt=""></a>
+                                    <input class="text-start w-50  sub-head" value="{{user.youtube}}" type="text" name="youtube"></input>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a class="btn btn-info " target="__blank" href="/editProfile">Edit</a>
+                                    <button class="btn btn-danger mt-4" type="submit">Save</button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -251,20 +243,6 @@
     <footer>
         <div class="text-center p-4">All Rights reserved to Shruti-Sangam @2024</div>
     </footer>
-    <script>
-        function toggleFollow() {
-            var followButton = document.getElementById('followButton');
-            if (followButton.innerHTML === 'Follow') {
-                followButton.innerHTML = 'Following';
-                followButton.classList.remove('btn-primary');
-                followButton.classList.add('btn-success');
-            } else {
-                followButton.innerHTML = 'Follow';
-                followButton.classList.remove('btn-success');
-                followButton.classList.add('btn-primary');
-            }
-        }
-    </script>
 </body>
 
 </html>

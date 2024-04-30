@@ -24,38 +24,32 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-$(document).ready(function () {
-    $(".box").hover(function () {
-        $(this).find(".pop-up").show();
+$(document).ready(function(){
+    $('#sitar').click(function() {
+        $('#inst-head').html("Sitar");
+        $('#inst-para').html("The sitar, a quintessential instrument in Hindustani classical music, evokes a sense of timeless elegance and spiritual depth. With its long neck, resonant gourd body, and intricate fretwork, <b>the sitar is not only a musical instrument but also a symbol of India's rich cultural heritage and artistic legacy.</b>");
+        $('#inst-course').attr('href', 'sitar.html');
     });
 
-    $(".box").mouseleave(function () {
-        $(this).find(".pop-up").hide();
+    $('#tabla').click(function() {
+        $('#inst-head').html("Tabla");
+        $('#inst-para').html("Tabla, the rhythmic heartbeat of Hindustani classical music, embodies a rich tradition of percussive artistry and cultural heritage.<br><b>In Hindustani classical music, the tabla serves as the primary rhythmic accompaniment, providing a dynamic and intricate framework for melodic improvisation.</b>");
+        $('#inst-course').attr('href', 'tabla.html');
+    });
+
+    $('#flute').click(function() {
+        $('#inst-head').html("Flute");
+        $('#inst-para').html("In Hindustani classical music, the flute holds a special place as one of the most enchanting and expressive instruments. Known as the 'bansuri,' it is revered for its ability to evoke deep emotions and paint vivid musical landscapes.<br><b>Its lyrical melodies and fluid phrasing create a sense of serenity and tranquility, drawing listeners into a state of contemplation and reflection</b>.");
+        $('#inst-course').attr('href', 'flute.html');
+    });
+
+    $('#harmonium').click(function() {
+        $('#inst-head').html("Harmonium");
+        $('#inst-para').html("In Hindustani classical music, the harmonium plays a significant role as both a solo and accompaniment instrument, providing harmonic support and adding depth to vocal and instrumental performances.<br> <b>Its rich, warm tones blend seamlessly with the human voice, creating a vibrant tapestry of sound that resonates with audiences.</b>");
+        $('#inst-course').attr('href', 'harmonium.html');
     });
 });
 
-document.getElementById('sitar').addEventListener('click', () => {
-    document.getElementById('inst-head').innerHTML = "Sitar";
-    document.getElementById('inst-para').innerHTML = "The sitar, a quintessential instrument in Hindustani classical music, evokes a sense of timeless elegance and spiritual depth. With its long neck, resonant gourd body, and intricate fretwork, <b>the sitar is not only a musical instrument but also a symbol of India's rich cultural heritage and artistic legacy.</b>";
-    document.getElementById('inst-course').href = "sitar.html";
-});
-
-document.getElementById('tabla').addEventListener('click', () => {
-    document.getElementById('inst-head').innerHTML = "Tabla";
-    document.getElementById('inst-para').innerHTML = "Tabla, the rhythmic heartbeat of Hindustani classical music, embodies a rich tradition of percussive artistry and cultural heritage.<br><b>In Hindustani classical music, the tabla serves as the primary rhythmic accompaniment, providing a dynamic and intricate framework for melodic improvisation.</b>";
-    document.getElementById('inst-course').href = "tabla.html";
-});
-document.getElementById('flute').addEventListener('click', () => {
-    document.getElementById('inst-head').innerHTML = "Flute";
-    document.getElementById('inst-para').innerHTML = "In Hindustani classical music, the flute holds a special place as one of the most enchanting and expressive instruments. Known as the 'bansuri,' it is revered for its ability to evoke deep emotions and paint vivid musical landscapes.<br><b>Its lyrical melodies and fluid phrasing create a sense of serenity and tranquility, drawing listeners into a state of contemplation and reflection</b>.";
-    document.getElementById('inst-course').href = "flute.html";
-});
-
-document.getElementById('harmonium').addEventListener('click', () => {
-    document.getElementById('inst-head').innerHTML = "Harmonium";
-    document.getElementById('inst-para').innerHTML = "In Hindustani classical music, the harmonium plays a significant role as both a solo and accompaniment instrument, providing harmonic support and adding depth to vocal and instrumental performances.<br> <b>Its rich, warm tones blend seamlessly with the human voice, creating a vibrant tapestry of sound that resonates with audiences.</b>";
-    document.getElementById('inst-course').href = "harmonium.html";
-});
 
 var instMainImage = document.getElementById("inst-main-img");
 var instThumbnails = document.getElementsByClassName('inst-thumb-img');
@@ -111,9 +105,63 @@ $(document).ready(function () {
     setTimeout(typeHeadingWelcome, 1000);
 });
 
+
+var instMainImage = document.getElementById("inst-main-img");
+var instThumbnails = document.getElementsByClassName('inst-thumb-img');
+var selectedThumbBox = null;
+
+for (var i = 0; i < instThumbnails.length; i++) {
+    var instImg = instThumbnails[i];
+    instImg.addEventListener('click', function () {
+        instMainImage.src = this.src;
+
+        // Check if there's a previously selected thumb-box
+        if (selectedThumbBox !== null) {
+            // Remove the 'selected' class to bring it back to its normal position
+            selectedThumbBox.classList.remove('selected');
+        }
+
+        // Add 'selected' class to the clicked thumb-box to raise it up
+        this.parentNode.classList.add('selected');
+        selectedThumbBox = this.parentNode;
+    });
+}
+
+var vocalMainImage = document.getElementById("vocal-main-img");
+var vocalThumbnails = document.getElementsByClassName('vocal-thumb-img');
+var selectedThumbBox = null;
+
+for (var i = 0; i < vocalThumbnails.length; i++) {
+    var vocalImg = vocalThumbnails[i];
+    vocalImg.addEventListener('click', function () {
+        vocalMainImage.src = this.src;
+
+        // Check if there's a previously selected thumb-box
+        if (selectedThumbBox !== null) {
+            // Remove the 'selected' class to bring it back to its normal position
+            selectedThumbBox.classList.remove('selected');
+        }
+
+        // Add 'selected' class to the clicked thumb-box to raise it up
+        this.parentNode.classList.add('selected');
+        selectedThumbBox = this.parentNode;
+    });
+}
+
+$(document).ready(function() {
+    $('.art1-div').hover(
+        function() {
+            $('.new-to-classical').css("opacity", "1");
+        },
+        function() {
+            $('.new-to-classical').css("opacity", "0");
+        }
+    );
+});
+
 $(document).ready(function () {
-    const Text = "Shruti-Sangam";
-    const typingElement = $(".logo");
+    const Text = "Welcome to Shruti-Sangam";
+    const typingElement = $("#about-welcome");
     let index = 0;
     function type() {
         if (index < Text.length) {
@@ -125,44 +173,6 @@ $(document).ready(function () {
     setTimeout(type, 1000);
 });
 
-var instMainImage = document.getElementById("inst-main-img");
-    var instThumbnails = document.getElementsByClassName('inst-thumb-img');
-    var selectedThumbBox = null;
-
-    for (var i = 0; i < instThumbnails.length; i++) {
-        var instImg = instThumbnails[i];
-        instImg.addEventListener('click', function () {
-            instMainImage.src = this.src;
-
-            // Check if there's a previously selected thumb-box
-            if (selectedThumbBox !== null) {
-                // Remove the 'selected' class to bring it back to its normal position
-                selectedThumbBox.classList.remove('selected');
-            }
-
-            // Add 'selected' class to the clicked thumb-box to raise it up
-            this.parentNode.classList.add('selected');
-            selectedThumbBox = this.parentNode;
-        });
-    }
-
-    var vocalMainImage = document.getElementById("vocal-main-img");
-    var vocalThumbnails = document.getElementsByClassName('vocal-thumb-img');
-    var selectedThumbBox = null;
-
-    for (var i = 0; i < vocalThumbnails.length; i++) {
-        var vocalImg = vocalThumbnails[i];
-        vocalImg.addEventListener('click', function () {
-            vocalMainImage.src = this.src;
-
-            // Check if there's a previously selected thumb-box
-            if (selectedThumbBox !== null) {
-                // Remove the 'selected' class to bring it back to its normal position
-                selectedThumbBox.classList.remove('selected');
-            }
-
-            // Add 'selected' class to the clicked thumb-box to raise it up
-            this.parentNode.classList.add('selected');
-            selectedThumbBox = this.parentNode;
-        });
-    }
+$(document).ready(function() {
+    $("section").fadeIn(1000);
+})

@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
+
+:root {
+  --matte-white: rgb(253, 251, 249);
+  --matte-black: rgb(31, 31, 31);
+  --matte-cyan: rgb(0, 255, 255);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--matte-black);
+  font-weight: 500;
+  font-size: 17px;
+}
+
+#hero {
+  background-image: url("/Assets/images/thumb6.png");
+  background-size: cover;
+  height: 500px;
+}
+
+/* CSS Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Apply animation to the content */
+#hero .mx-5 {
+  animation: fadeIn 2s ease-out forwards;
+}
+
+/* Apply animation to the button */
+#hero .btn {
+  animation: fadeIn 2s ease-out forwards 0.5s;
+}
+#text1, #text2, #text3 {
+  display:none;
+}
+#how-work {
+    opacity:0;
+    transition:1s;
+}
+
+.work {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 320px;
+  width: 300px;
+  border-bottom: 3px solid var(--matte-cyan);
+  color: var(--matte-white);
+  background-color: rgb(51, 51, 51);
+  padding: 10px;
+  text-align: center;
+  border-radius:10px;
+  gap: 1rem;
+}
+.work:hover {
+  transform:scale(1.1);
+  border-bottom:8px solid rgb(222, 7, 157);
+  transition:1s;
+}
+.work h3 {
+  color: var(--matte-cyan);
+}
+
+.work h4 {
+  font-size: 1.5rem;
+}
+
+a {
+  color: var(--matte-cyan);
+}
+
+
+h3 {
+  font-size: 2.5rem;
+  color: var(--matte-white);
+}
+.banner {
+  background-color:rgb(11, 87, 169)
+}
+section {
+  background-image:url("/Assets/images/bg.png");
+  background-repeat:no-repeat;
+  background-size: cover;
+}

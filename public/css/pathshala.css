@@ -19,6 +19,7 @@ body {
 .course-info {
     flex-wrap: wrap;
 }
+
 aside {
     background-color: #fff;
     padding: 20px;

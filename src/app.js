@@ -1,16 +1,18 @@
 require('dotenv').config();
 require('./db/conn');
 const express = require('express');
-const path = require('path');
 const app = express();
+const path = require('path');
 const hbs = require('hbs');
 const bcrypt = require('bcryptjs');
+const Handlebars = require('handlebars');
 const jwt = require('jsonwebtoken');
+const multer = require('multer');
 const cookieParser = require('cookie-parser');
 const requireAuth = require('./middleware/auth');
 const Register = require("./models/registers");
 const { Beginner, Intermediate, Advance } = require("./models/courses");
-
+const { BeginnerCart, IntermediateCart, AdvanceCart } = require("./models/cart");
 const port = process.env.PORT || 3000;
 
 const staticPath = path.join(__dirname, "../public");
@@ -32,7 +34,12 @@ app.get('/home', requireAuth, (req, res) => {
     const isAuthenticated = req.cookies.jwt ? true : false;
     res.render('index', { isAuthenticated });
 })
-
+app.get('/about', (req, res) => {
+    res.render('about');
+})
+app.get('/contact', (req, res) => {
+    res.render('contact');
+})
 
 app.get('/register', (req, res) => {
     res.render("register");
@@ -40,6 +47,12 @@ app.get('/register', (req, res) => {
 
 app.get('/login', (req, res) => {
     res.render('login');
+})
+app.get('/forgotPassword', (req, res) => {
+    res.render('forgotPassword');
+})
+app.get('/resetPassword', (req, res) => {
+    res.render('resetPassword');
 })
 
 app.get('/instrumental', requireAuth, (req, res) => {
@@ -62,19 +75,77 @@ app.get('/tablaCourseInt', requireAuth, (req, res) => {
     const isAuthenticated = req.cookies.jwt ? true : false;
     res.render('tablaCourseInt', { isAuthenticated });
 });
+
+app.get('/cart', async (req, res) => {
+    try {
+        const isAuthenticated = req.cookies.jwt ? true : false;
+        const userEmail = req.cookies.info;
+        const userDetail = await Register.find({ email: userEmail });
+        const beginnerCourses = await BeginnerCart.find({ email: userEmail });
+        const intermediateCourses = await IntermediateCart.find({ email: userEmail });
+        const advanceCourses = await AdvanceCart.find({ email: userEmail });
+        if (beginnerCourses && intermediateCourses && advanceCourses && userDetail)
+            res.render('cart', {
+                isAuthenticated,
+                userDetail: userDetail,
+                beginnerCourses: beginnerCourses,
+                intermediateCourses: intermediateCourses,
+                advanceCourses: advanceCourses
+            });
+    } catch (err) {
+        res.send(err);
+    }
+})
+app.get('/transaction', requireAuth, (req, res) => {
+    const course = req.query.course;
+    const level = req.query.level;
+    const name = req.query.name;
+    const pack = req.query.pack;
+    res.render('transaction', { course, level, pack, name });
+});
+app.get('/invoice', (req, res) => { 
+    res.render('invoice');
+})
+
+app.get('/myPathshala', requireAuth, async (req, res) => {
+    try {
+        const isAuthenticated = req.cookies.jwt ? true : false;
+        const userEmail = req.cookies.info;
+        const userDetail = await Register.find({ email: userEmail });
+        let beginnerCourses = await Beginner.find({ email: userEmail, isChecked: "Yes" });
+        let intermediateCourses = await Intermediate.find({ email: userEmail, isChecked: "Yes" });
+        let advanceCourses = await Advance.find({ email: userEmail, isChecked: "Yes" });
+    
+        beginnerCourses = beginnerCourses.filter(course => course.isChecked === "Yes");
+        intermediateCourses = intermediateCourses.filter(course => course.isChecked === "Yes");
+        advanceCourses = advanceCourses.filter(course => course.isChecked === "Yes");
+    
+        if (beginnerCourses && intermediateCourses && advanceCourses && userDetail)
+            res.render('pathshala', {
+                isAuthenticated,
+                userDetail: userDetail,
+                beginnerCourses: beginnerCourses,
+                intermediateCourses: intermediateCourses,
+                advanceCourses: advanceCourses
+            });
+    } catch (err) {
+        res.send(err);
+    }
+});
+
 app.get('/profile', requireAuth, async (req, res) => {
     try {
         const isAuthenticated = req.cookies.jwt ? true : false;
         const id = req.cookies.info;
-        const user = await Register.findOne({ email : id });
+        const user = await Register.findOne({ email: id });
         if (user) {
             res.render('profile', { isAuthenticated, user });
         }
     }
-    catch(err) {
+    catch (err) {
         res.send("invalid");
     }
-    
+
 })
 app.get('/editProfile', requireAuth, async (req, res) => {
     try {
@@ -82,7 +153,7 @@ app.get('/editProfile', requireAuth, async (req, res) => {
         const email = req.cookies.info;
         const user = await Register.findOne({ email });
         if (user) {
-            res.render('editProfile', { isAuthenticated, user });
+            res.render('demo', { isAuthenticated, user });
         }
     }
     catch (err) {
@@ -95,10 +166,10 @@ app.get('/logout', (req, res) => {
         res.clearCookie('info');
         res.redirect('/');
     }
-    catch(err) {
-        res.render('/error', {error : '*Technical problem moving you to main page'});
+    catch (err) {
+        res.render('/error', { error: '*Technical problem moving you to main page' });
     }
-    
+
 })
 
 app.post('/register', async (req, res) => {
@@ -124,7 +195,8 @@ app.post('/register', async (req, res) => {
             age: req.body.age,
             mobile: req.body.mobile,
             password: req.body.password,
-            confirmPassword: req.body.password
+            confirmPassword: req.body.password,
+            country : req.body.country
         });
 
         // Implementing Password Hashing using BcryptJs
@@ -132,10 +204,7 @@ app.post('/register', async (req, res) => {
         console.log(token);
 
         // Create cookie
-        res.cookie('jwt', token, {
-            expires: new Date(Date.now() + 30000),   // Expire cookie time
-            httpOnly: true
-        });
+        res.cookie('jwt', token, { maxAge: 900000, httpOnly: true });
         res.cookie('info', email, { maxAge: 900000, httpOnly: true });
         const registered = await registerUser.save();
         res.redirect('/home');
@@ -183,15 +252,19 @@ app.post('/courses', async (req, res) => {
         const package = req.body.package;
 
         let CourseModel;
+        let CartModel;
         switch (level.toLowerCase()) {
             case 'beginner':
                 CourseModel = Beginner;
+                CartModel = BeginnerCart;
                 break;
             case 'intermediate':
                 CourseModel = Intermediate;
+                CartModel = IntermediateCart;
                 break;
             case 'advance':
                 CourseModel = Advance;
+                CartModel = AdvanceCart;
                 break;
             default:
                 return res.status(400).send('Invalid level provided');
@@ -213,33 +286,27 @@ app.post('/courses', async (req, res) => {
             mobile: req.body.mobile,
             joiningDate: req.body.date,
             timings: req.body.time,
-            img: req.body.img
+            img: req.body.img,
+        });
+        let cartDetails = new CartModel({
+            course: course,
+            level: level,
+            package: package,
+            email: email,
+            firstname: req.body.fname,
+            lastname: req.body.lname,
+            timings: req.body.time,
+            img:req.body.img
         });
         await userDetails.save();
-        res.redirect('/myClassroom');
+        await cartDetails.save();
+        res.redirect('/myPathshala');
     } catch (err) {
         console.error(err);
         res.status(500).send('Internal Server Error');
     }
 });
-app.get('/myPathshala', requireAuth, async (req, res) => {
-    try {
-        const userEmail = req.cookies.info;
-        const userDetail = await Register.find({ email: userEmail });
-        const beginnerCourses = await Beginner.find({ email: userEmail });
-        const intermediateCourses = await Intermediate.find({ email: userEmail });
-        const advanceCourses = await Advance.find({ email: userEmail });
-        if (beginnerCourses && intermediateCourses && advanceCourses && userDetail)
-            res.render('pathshala', {
-                userDetail: userDetail,
-                beginnerCourses: beginnerCourses,
-                intermediateCourses: intermediateCourses,
-                advanceCourses: advanceCourses
-            });
-    } catch (err) {
-        res.send(err);
-    }
-});
+
 
 app.post('/editProfile', async (req, res) => {
     const email = req.cookies.info;
@@ -247,7 +314,12 @@ app.post('/editProfile', async (req, res) => {
         firstname: req.body.fname,
         lastname: req.body.lname,
         age: req.body.age,
-        mobile: req.body.mobile
+        mobile: req.body.mobile,
+        address:req.body.address,
+        instagram:req.body.instagram,
+        facebook:req.body.facebook,
+        twitter:req.body.twitter,
+        youtube:req.body.youtube
     };
 
     try {
@@ -266,7 +338,92 @@ app.post('/editProfile', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+app.post('/transaction', async (req, res) => {
+    const email = req.cookies.info;
+    const course = req.body.course;
+    const level = req.body.level;
+    let CartModel;
+    let CourseModel;
+    switch (level.toLowerCase()) {
+        case 'beginner':
+            CartModel = BeginnerCart;
+            CourseModel = Beginner;
+            break;
+        case 'intermediate':
+            CartModel = IntermediateCart;
+            CourseModel = Intermediate;
+            break;
+        case 'advance':
+            CartModel = AdvanceCart;
+            CourseModel = Advance;
+            break;
+        default:
+            return res.status(400).send('Invalid level provided');
+    }
 
+    try {
+        const result = await CartModel.findOneAndDelete({ email, course });
+
+        if (!result) {
+            return res.status(404).send('Data not found');
+        }
+        await CourseModel.findOneAndUpdate(
+            { email, course },
+            { $set: { isChecked: 'Yes' } }
+        );
+        return res.status(200).render('invoice');
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send('Internal Server Error');
+    }
+});
+
+app.post('/forgotPassword', async (req, res) => {
+    const email = req.body.email;
+    const mobile = req.body.mobile;
+    try {
+        const user = await Register.find({ email, mobile });
+        if(user) {
+            res.render('resetPassword', {email, mobile})
+        }
+        else {
+            res.render('forgotPassword', {err : "Invalid data, Data not found"});
+        }
+    }
+    catch(error) {
+        console.log(error);
+        res.send("An Unexpected error occured!");
+    }
+});
+
+app.post('/resetPassword', async (req, res) => {
+    const email = req.body.email;
+    const { newPassword, confirmPassword} = req.body;
+    try {
+      const user = await Register.findOne({email});
+      if (user) {
+        const hashPassword = await bcrypt.hash(newPassword, 10);
+        const hashConfirmPassword = await bcrypt.hash(confirmPassword, 10);
+        const updatePassword  = {
+            password : hashPassword,
+            consfirmPassword : hashConfirmPassword
+        };
+        await Register.updateOne({ email }, { $set: updatePassword });
+        res.render('login', {success : "Password updated successfully"});
+      } else {
+        res.send("An error occurred");
+      }
+    } catch (error) {
+      console.error(error);
+      res.send("An error occurred");
+    }
+});
+app.post('/removeFromCart', (req, res) => {
+    
+})
+app.get('/demo', (req, res) => {
+    res.render('demo');
+})
 app.listen(port, () => {
     console.log(`Server is running at port no ${port}`);
 })

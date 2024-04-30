@@ -18,12 +18,15 @@
       <img src="/Assets/images/ico2.png" alt="pin logo" class="img1" />
       <p class="header">Log in to see more</p>
       {{#if error}}
-            <p class="error-message text-danger">{{error}}</p>
+        <p class="error-message text-danger">{{error}}</p>
       {{/if}}
-      <input type="email" id="email" placeholder="Email" name="email" class="detail" required/><br />
-      <input type="password" id="password" placeholder="Password" name="password" class="detail" required/>
+      {{#if success}}
+        <p>{{success}}</p>
+      {{/if}}
+      <input type="email" id="email" placeholder="Email" name="email" class="detail" required /><br />
+      <input type="password" id="password" placeholder="Password" name="password" class="detail" required />
 
-      <h4><a href="">Forgot your password?</a></h4>
+      <h4><a href="/forgotPassword">Forgot your password?</a></h4>
 
       <button class="btn int" type="submit">Log in</button>
       <p class="or">OR</p>

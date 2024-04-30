@@ -20,9 +20,9 @@
             {{#if error}}
             <p class="error-message text-danger">{{error}}</p>
             {{/if}}
-            <div class="sec1" >
+            <div class="sec1">
                 <!-- Input fields -->
-                <div class="d-flex w-100" >
+                <div class="d-flex w-100">
                     <input type="text" id="fname" name="fname" placeholder="First Name" class="detail " required>
                     <input type="text" id="lname" name="lname" placeholder="Last Name" class="detail" required>
                 </div>
@@ -32,11 +32,13 @@
                 </div>
                 <div class="d-flex">
                     <input type="email" id="email" name="email" placeholder="Email" class="detail" required>
-                <input type="password" id="password" name="password" placeholder="Password" class="detail" required>
+                    <input type="password" id="password" name="password" placeholder="Password" class="detail" required>
                 </div>
-                
-                <input type="password" id="confpassword" name="confirmPassword" placeholder="Confirm Password"
-                    class="detail w-50" required><br>
+                <div class="d-flex">
+                    <input type="password" id="confpassword" name="confirmPassword" placeholder="Confirm Password"
+                        class="detail w-50" required><br>
+                    <input type="text" id="country" name="country" placeholder="Country:" class="detail w-50" required>
+                </div>
             </div>
             <div class="sec2">
                 <input type="submit" class="btn int" value="Register">

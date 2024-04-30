@@ -32,6 +32,34 @@ const userSchema = new mongoose.Schema({
         type : String,
         required : true
     },
+    country: {
+        type : String,
+        required : true
+    },
+    address: {
+        type:String,
+        default:"Fill your address"
+    },
+    instagram : {
+        type:String,
+        default : "Enter your Instagram handle"
+    },
+    facebook : {
+        type:String,
+        default : "Enter your Facebook handle"
+    },
+    twitter: {
+        type:String,
+        default : "Enter your Twitter handle"
+    },
+    youtube : {
+        type:String,
+        default : "Enter your Youtube channel"
+    },
+    profilePicture : {
+        type : String,
+        default : "Assets/images/profileico.png"
+    }
 });
 
 // Generating tokens
