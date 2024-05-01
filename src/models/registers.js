@@ -71,8 +71,9 @@ userSchema.methods.generateAuthToken = async function() {
         return token;
     }
     catch(error) {
-        res.send("The error part" + error);
-        console.log("The error part " + error);
+        throw new Error("Error generating authentication token: " + error);
+        // res.send("The error part" + error);
+        // console.log("The error part " + error);
         
     }
 }
