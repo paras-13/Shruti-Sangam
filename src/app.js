@@ -382,12 +382,12 @@ app.post('/forgotPassword', async (req, res) => {
     const email = req.body.email;
     const mobile = req.body.mobile;
     try {
-        const user = await Register.find({ email, mobile });
-        if(user) {
+        const user = await Register.find({ email, mobile});
+        if(user.length > 0) {
             res.render('resetPassword', {email, mobile})
         }
         else {
-            res.render('forgotPassword', {err : "Invalid data, Data not found"});
+            res.render('forgotPassword', {err : "Invalid data, Wrong credentials"});
         }
     }
     catch(error) {
@@ -419,7 +419,9 @@ app.post('/resetPassword', async (req, res) => {
     }
 });
 app.post('/removeFromCart', (req, res) => {
-    
+    const email = req.cookies.info;
+    let CourseModel;
+
 })
 app.get('/demo', (req, res) => {
     res.render('demo');
